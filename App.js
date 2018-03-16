@@ -2,17 +2,32 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
-  Text,
   View
 } from 'react-native';
-import Calculator from './Calculator.js'
+import Calculator from './Calculator.js';
+import { Header, Left, Right, Button, Icon, Body, Title } from 'native-base';
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
+      
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>WATO</Title>
+          </Body>
+          <Right>
+          </Right>
+        </Header>
+
         <Calculator />
+
       </View>
     );
   }
@@ -24,15 +39,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
