@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { Text, Item, Input, Label } from 'native-base';
+import { Text, Item, Input, Label, Button } from 'native-base';
 
 class Odds extends Component {
   render() {
@@ -74,7 +74,7 @@ export default class Calculator extends Component {
   }
 
   clearState() {
-      this.setState(initialState);
+    this.setState(initialState);
   }
 
   convertOdds(odds) {
@@ -141,12 +141,10 @@ export default class Calculator extends Component {
         <Bet bet={this.state.bet} odds={this.state.odds} onChange={(event) => this.handleChange(event, 'bet')}/>
         <Win win={this.state.win} odds={this.state.odds} onChange={(event) => this.handleChange(event, 'win')}/>
         <Payout payout={this.state.payout}/>
-        {/*</CardText>
-        <CardActions>
-          <FlatButton label="Reset" onClick={() => this.clearState()} />
-        </CardActions>
-      </Card>*/}
-    
+        <Text></Text>
+        <Button block info onPress={() => this.clearState()}>
+          <Text>Reset</Text>
+        </Button>
     </View>
     );
   }
