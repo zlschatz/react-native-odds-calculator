@@ -71,7 +71,6 @@ export default class Calculator extends Component {
     super(props);
 
     this.state = initialState;
-    console.log(this.state);
   }
 
   clearState() {
@@ -91,11 +90,11 @@ export default class Calculator extends Component {
     var odds = this.convertOdds(this.state.odds);
     if (odds > 0) {
       this.setState({win: (odds * (this.state.bet/100)).toFixed(2)}, function () {
-        this.setState({payout: (parseFloat(this.state.bet) + parseFloat(this.state.win))});
+        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
       });
     } else {
       this.setState({win: ((100/Math.abs(odds)) * this.state.bet).toFixed(2)}, function () {
-        this.setState({payout: (parseFloat(this.state.bet) + parseFloat(this.state.win))});
+        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
       });
     }
   }
@@ -104,30 +103,29 @@ export default class Calculator extends Component {
     var odds = this.convertOdds(this.state.odds);
     if (odds > 0) {
       this.setState({bet: ((this.state.win / odds) * 100).toFixed(2)}, function () {
-        this.setState({payout: (parseFloat(this.state.bet) + parseFloat(this.state.win))});
+        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
       });
     } else {
       this.setState({bet: (this.state.win / (100/Math.abs(odds))).toFixed(2)}, function () {
-        this.setState({payout: (parseFloat(this.state.bet) + parseFloat(this.state.win))});
+        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
       });
     }
   }
 
-  handleChange = (event, key) => {
-    debugger;
+  handleChange(event, key) {
     switch(key) {
       case 'odds':
-        this.setState({ odds: event.target.value }, function () {
+        this.setState({ odds: event.nativeEvent.text }, function () {
           this.calculateWin();
         });
         break;
       case 'bet':
-        this.setState({ bet: event.target.value }, function () {
+        this.setState({ bet: event.nativeEvent.text }, function () {
           this.calculateWin();
         });
         break;
       case 'win':
-        this.setState({ win: event.target.value }, function () {
+        this.setState({ win: event.nativeEvent.text }, function () {
           this.calculateFromWin();
         });
         break;
