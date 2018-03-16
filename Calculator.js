@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AppRegistry,
   Platform,
   StyleSheet,
   Text,
@@ -10,7 +11,9 @@ type Props = {};
 export default class Calculator extends Component<Props> {
   render() {
     return (
-      <div></div>
+      <View>
+        <Text>Hi!</Text>
+      </View>
     );
   }
 }
@@ -18,3 +21,5 @@ export default class Calculator extends Component<Props> {
 const styles = StyleSheet.create({
   
 });
+
+AppRegistry.registerComponent('Calculator', () => Calculator);
