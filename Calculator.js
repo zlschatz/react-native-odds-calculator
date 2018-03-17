@@ -10,9 +10,10 @@ import { Text, Item, Input, Label, Button } from 'native-base';
 class Odds extends Component {
   render() {
     return (
-        <Item floatingLabel>
-          <Label>Odds</Label>
-          <Input 
+        <Item floatingLabel style={styles.item}>
+          <Label style={styles.label}>Odds</Label>
+          <Input
+            style={styles.textInput}
             value={(this.props.odds) ? (this.props.odds) : ''}
             onChange={this.props.onChange}
           />
@@ -24,9 +25,10 @@ class Odds extends Component {
 class Bet extends Component {
   render() {
     return (
-      <Item floatingLabel>
-        <Label>Bet Amount ($)</Label>
-        <Input 
+      <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>Bet Amount ($)</Label>
+        <Input
+          style={styles.textInput}
           value={(this.props.bet > 0) ? (this.props.bet) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
@@ -39,9 +41,10 @@ class Bet extends Component {
 class Win extends Component {
   render() {
     return (
-      <Item floatingLabel>
-        <Label>To Win ($)</Label>
-        <Input 
+      <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>To Win ($)</Label>
+        <Input
+          style={styles.textInput}
           value={(isFinite(this.props.win) && (this.props.win > 0)) ? (this.props.win) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
@@ -54,9 +57,10 @@ class Win extends Component {
 class Payout extends Component {
   render() {
     return (
-      <Item floatingLabel>
-        <Label>Payout ($)</Label>
-        <Input 
+      <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>Payout ($)</Label>
+        <Input
+          style={styles.textInput}
           value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? (this.props.payout) : ''}
           onChange={this.props.onChange}
           disabled={true}
@@ -137,12 +141,19 @@ export default class Calculator extends Component {
   render() {
     return (
     <View>
+      <View style={styles.oddsInput}>
         <Odds odds={this.state.odds} onChange={(event) => this.handleChange(event, 'odds')}/>
+      </View>
+      <View style={styles.betInput}>
         <Bet bet={this.state.bet} odds={this.state.odds} onChange={(event) => this.handleChange(event, 'bet')}/>
+      </View>
+      <View style={styles.winInput}>
         <Win win={this.state.win} odds={this.state.odds} onChange={(event) => this.handleChange(event, 'win')}/>
+      </View>
+      <View style={styles.payoutInput}>
         <Payout payout={this.state.payout}/>
-        <Text></Text>
-        <Button block info onPress={() => this.clearState()}>
+      </View>
+        <Button block light onPress={() => this.clearState()}>
           <Text>Reset</Text>
         </Button>
     </View>
@@ -158,18 +169,27 @@ const initialState = {
 }
 
 const styles = {
-  errorStyle: {
-    color: 'grey',
+  oddsInput: {
+    backgroundColor: '#253629',
   },
-  underlineStyle: {
-    borderColor: 'grey',
+  betInput: {
+    backgroundColor: '#4A654E',
   },
-  floatingLabelStyle: {
-    color: 'grey',
+  winInput: {
+    backgroundColor: '#8CA88A',
   },
-  floatingLabelFocusStyle: {
-    color: 'grey',
+  payoutInput: {
+    backgroundColor: '#C0CEB3',
   },
+  label: {
+    color: 'white',
+  },
+  textInput: {
+    color: 'white',
+  },
+  item: {
+    borderColor: 'transparent',
+  }
 };
 
 AppRegistry.registerComponent('Calculator', () => Calculator);
