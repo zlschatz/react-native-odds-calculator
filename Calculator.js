@@ -180,27 +180,27 @@ const initialState = {
 const styles = {
   oddsInput: {
     flex: 1,
-    backgroundColor: '#5d2bbf',
+    backgroundColor: '#49654C',
     justifyContent: 'center',
   },
   betInput: {
     flex: 1,
-    backgroundColor: '#e58267',
+    backgroundColor: '#8AA989',
     justifyContent: 'center',
   },
   winInput: {
     flex: 1,
-    backgroundColor: '#d7f79b',
+    backgroundColor: '#C0CEB2',
     justifyContent: 'center',
   },
   payoutInput: {
     flex: 1,
-    backgroundColor: '#6ae8a1',
+    backgroundColor: '#E3E6DA',
     justifyContent: 'center',
   },
   reset: {
     flex: 1,
-    backgroundColor: '#045996',
+    backgroundColor: '#EBEBE9',
     justifyContent: 'center',
   },
   label: {
