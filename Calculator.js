@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Platform,
   StyleSheet,
+  TouchableOpacity,
   View
 } from 'react-native';
 import { Text, Item, Input, Label, Button } from 'native-base';
@@ -10,9 +11,11 @@ import { Text, Item, Input, Label, Button } from 'native-base';
 class Odds extends Component {
   render() {
     return (
-        <Item floatingLabel style={styles.item}>
-          <Label style={styles.label}>Odds</Label>
+        <Item inlineLabel style={styles.item}>
           <Input
+            placeholder="ODDS"
+            placeholderTextColor="white"
+            textAlign="center"
             style={styles.textInput}
             value={(this.props.odds) ? (this.props.odds) : ''}
             onChange={this.props.onChange}
@@ -26,8 +29,10 @@ class Bet extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>Bet Amount ($)</Label>
         <Input
+          placeholder="BET AMOUNT ($)"
+          placeholderTextColor="white"
+          textAlign="center"
           style={styles.textInput}
           value={(this.props.bet > 0) ? (this.props.bet) : ''}
           onChange={this.props.onChange}
@@ -42,8 +47,10 @@ class Win extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>To Win ($)</Label>
         <Input
+          placeholder="TO WIN ($)"
+          placeholderTextColor="white"
+          textAlign="center"
           style={styles.textInput}
           value={(isFinite(this.props.win) && (this.props.win > 0)) ? (this.props.win) : ''}
           onChange={this.props.onChange}
@@ -58,8 +65,10 @@ class Payout extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>Payout ($)</Label>
         <Input
+          placeholder="PAYOUT ($)"
+          placeholderTextColor="white"
+          textAlign="center"
           style={styles.textInput}
           value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? (this.props.payout) : ''}
           onChange={this.props.onChange}
@@ -140,7 +149,7 @@ export default class Calculator extends Component {
 
   render() {
     return (
-    <View>
+    <View style={{flex: 1}}>
       <View style={styles.oddsInput}>
         <Odds odds={this.state.odds} onChange={(event) => this.handleChange(event, 'odds')}/>
       </View>
@@ -153,9 +162,9 @@ export default class Calculator extends Component {
       <View style={styles.payoutInput}>
         <Payout payout={this.state.payout}/>
       </View>
-        <Button block light onPress={() => this.clearState()}>
-          <Text>Reset</Text>
-        </Button>
+      <TouchableOpacity onPress={() => this.clearState()} style={styles.reset}>
+          <Text style={styles.resetText}>RESET</Text>
+      </TouchableOpacity>
     </View>
     );
   }
@@ -170,25 +179,45 @@ const initialState = {
 
 const styles = {
   oddsInput: {
-    backgroundColor: '#253629',
+    flex: 1,
+    backgroundColor: '#5d2bbf',
+    justifyContent: 'center',
   },
   betInput: {
-    backgroundColor: '#4A654E',
+    flex: 1,
+    backgroundColor: '#e58267',
+    justifyContent: 'center',
   },
   winInput: {
-    backgroundColor: '#8CA88A',
+    flex: 1,
+    backgroundColor: '#d7f79b',
+    justifyContent: 'center',
   },
   payoutInput: {
-    backgroundColor: '#C0CEB3',
+    flex: 1,
+    backgroundColor: '#6ae8a1',
+    justifyContent: 'center',
+  },
+  reset: {
+    flex: 1,
+    backgroundColor: '#045996',
+    justifyContent: 'center',
   },
   label: {
     color: 'white',
   },
   textInput: {
     color: 'white',
+    fontWeight: '900',
   },
   item: {
     borderColor: 'transparent',
+  },
+  resetText: {
+    fontWeight: '900',
+    color: 'grey',
+    color: 'white',
+    textAlign: 'center'
   }
 };
 
