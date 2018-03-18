@@ -11,10 +11,9 @@ import { Text, Item, Input, Label, Button } from 'native-base';
 class Odds extends Component {
   render() {
     return (
-        <Item inlineLabel style={styles.item}>
+        <Item floatingLabel style={styles.item}>
+          <Label style={styles.label}>ODDS</Label>
           <Input
-            placeholder="ODDS"
-            placeholderTextColor="white"
             textAlign="center"
             style={styles.textInput}
             value={(this.props.odds) ? (this.props.odds) : ''}
@@ -29,9 +28,8 @@ class Bet extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>BET AMOUNT ($)</Label>
         <Input
-          placeholder="BET AMOUNT ($)"
-          placeholderTextColor="white"
           textAlign="center"
           style={styles.textInput}
           value={(this.props.bet > 0) ? (this.props.bet) : ''}
@@ -47,9 +45,8 @@ class Win extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>TO WIN ($)</Label>
         <Input
-          placeholder="TO WIN ($)"
-          placeholderTextColor="white"
           textAlign="center"
           style={styles.textInput}
           value={(isFinite(this.props.win) && (this.props.win > 0)) ? (this.props.win) : ''}
@@ -65,9 +62,8 @@ class Payout extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>PAYOUT ($)</Label>
         <Input
-          placeholder="PAYOUT ($)"
-          placeholderTextColor="white"
           textAlign="center"
           style={styles.textInput}
           value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? (this.props.payout) : ''}
@@ -205,6 +201,8 @@ const styles = {
   },
   label: {
     color: 'white',
+    textAlign: 'center',
+    fontWeight: '900'
   },
   textInput: {
     color: 'white',
