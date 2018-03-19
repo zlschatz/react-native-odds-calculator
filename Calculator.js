@@ -29,12 +29,12 @@ class Bet extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>BET AMOUNT ($)</Label>
+        <Label style={styles.label}>BET</Label>
         <Input
           type="text"
           textAlign="center"
           style={styles.textInput}
-          value={(this.props.bet > 0) ? (this.props.bet) : ''}
+          value={(this.props.bet > 0) ? ('$' + this.props.bet) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
         />
@@ -47,11 +47,11 @@ class Win extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>TO WIN ($)</Label>
+        <Label style={styles.label}>WIN</Label>
         <Input
           textAlign="center"
           style={styles.textInput}
-          value={(isFinite(this.props.win) && (this.props.win > 0)) ? (this.props.win) : ''}
+          value={(isFinite(this.props.win) && (this.props.win > 0)) ? ('$' + this.props.win) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
         />
@@ -64,11 +64,11 @@ class Payout extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>PAYOUT ($)</Label>
+        <Label style={styles.label}>PAYOUT</Label>
         <Input
           textAlign="center"
           style={styles.textInput}
-          value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? (this.props.payout) : ''}
+          value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? ('$' + this.props.payout) : ''}
           onChange={this.props.onChange}
           disabled={true}
         />
@@ -101,11 +101,11 @@ export default class Calculator extends Component {
     var odds = this.convertOdds(this.state.odds);
     if (odds > 0) {
       this.setState({win: (odds * (this.state.bet/100)).toFixed(2)}, function () {
-        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
+        this.setState({payout: (+this.state.bet + +this.state.win).toFixed(2).toString()});
       });
     } else {
       this.setState({win: ((100/Math.abs(odds)) * this.state.bet).toFixed(2)}, function () {
-        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
+        this.setState({payout: (+this.state.bet + +this.state.win).toFixed(2).toString()});
       });
     }
   }
@@ -114,11 +114,11 @@ export default class Calculator extends Component {
     var odds = this.convertOdds(this.state.odds);
     if (odds > 0) {
       this.setState({bet: ((this.state.win / odds) * 100).toFixed(2)}, function () {
-        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
+        this.setState({payout: (+this.state.bet + +this.state.win).toFixed(2).toString()});
       });
     } else {
       this.setState({bet: (this.state.win / (100/Math.abs(odds))).toFixed(2)}, function () {
-        this.setState({payout: (+this.state.bet + +this.state.win).toString()});
+        this.setState({payout: (+this.state.bet + +this.state.win).toFixed(2).toString()});
       });
     }
   }
@@ -131,12 +131,12 @@ export default class Calculator extends Component {
         });
         break;
       case 'bet':
-        this.setState({ bet: event.nativeEvent.text }, function () {
+        this.setState({ bet: event.nativeEvent.text.replace('$', '') }, function () {
           this.calculateWin();
         });
         break;
       case 'win':
-        this.setState({ win: event.nativeEvent.text }, function () {
+        this.setState({ win: event.nativeEvent.text.replace('$', '') }, function () {
           this.calculateFromWin();
         });
         break;
