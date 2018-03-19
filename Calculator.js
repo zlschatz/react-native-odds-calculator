@@ -11,15 +11,16 @@ import { Text, Item, Input, Label, Button } from 'native-base';
 class Odds extends Component {
   render() {
     return (
-        <Item floatingLabel style={styles.item}>
-          <Label style={styles.label}>ODDS</Label>
-          <Input
-            textAlign="center"
-            style={styles.textInput}
-            value={(this.props.odds) ? (this.props.odds) : ''}
-            onChange={this.props.onChange}
-          />
-        </Item>
+      <Item floatingLabel style={styles.item}>
+        <Label style={styles.label}>ODDS</Label>
+        <Input
+          type="text"
+          textAlign="center"
+          style={styles.textInput}
+          value={(this.props.odds) ? (this.props.odds) : ''}
+          onChange={this.props.onChange}
+        />
+      </Item>
     );
   }
 }
@@ -30,6 +31,7 @@ class Bet extends Component {
       <Item floatingLabel style={styles.item}>
         <Label style={styles.label}>BET AMOUNT ($)</Label>
         <Input
+          type="text"
           textAlign="center"
           style={styles.textInput}
           value={(this.props.bet > 0) ? (this.props.bet) : ''}
@@ -181,17 +183,17 @@ const styles = {
   },
   betInput: {
     flex: 1,
-    backgroundColor: '#8AA989',
+    backgroundColor: '#5e8362',
     justifyContent: 'center',
   },
   winInput: {
     flex: 1,
-    backgroundColor: '#C0CEB2',
+    backgroundColor: '#8AA989',
     justifyContent: 'center',
   },
   payoutInput: {
     flex: 1,
-    backgroundColor: '#E3E6DA',
+    backgroundColor: '#C0CEB2',
     justifyContent: 'center',
   },
   reset: {
@@ -214,7 +216,6 @@ const styles = {
   resetText: {
     fontWeight: '900',
     color: 'grey',
-    color: 'white',
     textAlign: 'center'
   }
 };
