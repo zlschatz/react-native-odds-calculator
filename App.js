@@ -15,9 +15,6 @@ export default class App extends Component<Props> {
       
         <Header>
           <Left>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
           </Left>
           <Body>
             <Title>WATO</Title>
