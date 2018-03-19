@@ -17,7 +17,7 @@ export default class App extends Component<Props> {
           <Left>
           </Left>
           <Body>
-            <Title>WATO</Title>
+            <Title>OBW</Title>
           </Body>
           <Right>
           </Right>
