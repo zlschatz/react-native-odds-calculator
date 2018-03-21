@@ -5,23 +5,15 @@ import {
   View
 } from 'react-native';
 import Calculator from './Calculator.js';
-import { Header, Left, Right, Button, Icon, Body, Title } from 'native-base';
+import CustomHeader from './CustomHeader.js';
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-      
-        <Header>
-          <Left>
-          </Left>
-          <Body>
-            <Title>OBW</Title>
-          </Body>
-          <Right>
-          </Right>
-        </Header>
+
+        <CustomHeader />
 
         <Calculator />
 
