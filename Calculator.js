@@ -7,12 +7,13 @@ import {
   View
 } from 'react-native';
 import { Text, Item, Input, Label, Button } from 'native-base';
+import styles from './CustomStyles.js';
 
 class Odds extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>ODDS</Label>
+        <Label style={styles.customLabel}>ODDS</Label>
         <Input
           type="text"
           textAlign="center"
@@ -29,7 +30,7 @@ class Bet extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>BET</Label>
+        <Label style={styles.customLabel}>BET</Label>
         <Input
           type="text"
           textAlign="center"
@@ -47,7 +48,7 @@ class Win extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>WIN</Label>
+        <Label style={styles.customLabel}>WIN</Label>
         <Input
           textAlign="center"
           style={styles.textInput}
@@ -64,7 +65,7 @@ class Payout extends Component {
   render() {
     return (
       <Item floatingLabel style={styles.item}>
-        <Label style={styles.label}>PAYOUT</Label>
+        <Label style={styles.customLabel}>PAYOUT</Label>
         <Input
           textAlign="center"
           style={styles.textInput}
@@ -174,50 +175,5 @@ const initialState = {
     win: 0,
     payout: 0
 }
-
-const styles = {
-  oddsInput: {
-    flex: 1,
-    backgroundColor: '#49654C',
-    justifyContent: 'center',
-  },
-  betInput: {
-    flex: 1,
-    backgroundColor: '#5e8362',
-    justifyContent: 'center',
-  },
-  winInput: {
-    flex: 1,
-    backgroundColor: '#8AA989',
-    justifyContent: 'center',
-  },
-  payoutInput: {
-    flex: 1,
-    backgroundColor: '#C0CEB2',
-    justifyContent: 'center',
-  },
-  reset: {
-    flex: 1,
-    backgroundColor: '#EBEBE9',
-    justifyContent: 'center',
-  },
-  label: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: '900'
-  },
-  textInput: {
-    color: 'white',
-    fontWeight: '900',
-  },
-  item: {
-    borderColor: 'transparent',
-  },
-  resetText: {
-    fontWeight: '900',
-    color: 'grey',
-    textAlign: 'center'
-  }
-};
 
 AppRegistry.registerComponent('Calculator', () => Calculator);
