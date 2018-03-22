@@ -3,21 +3,24 @@ import {
   AppRegistry,
   Platform,
   StyleSheet,
+  TextInput,
   TouchableOpacity,
   View
 } from 'react-native';
-import { Text, Item, Input, Label, Button } from 'native-base';
+import { Text, Item, Label, Button } from 'native-base';
 import styles from './CustomStyles.js';
 
 class Odds extends Component {
   render() {
     return (
-      <Item floatingLabel style={styles.item}>
-        <Label style={styles.customLabel}>ODDS</Label>
-        <Input
+      <Item inlineLabel style={styles.item}>
+        <Label style={styles.customLabel}>ODDS:</Label>
+        <TextInput
           type="text"
           textAlign="center"
           style={styles.textInput}
+          placeholder="+200"
+          placeholderTextColor="#ededed"
           value={(this.props.odds) ? (this.props.odds) : ''}
           onChange={this.props.onChange}
         />
@@ -29,12 +32,14 @@ class Odds extends Component {
 class Bet extends Component {
   render() {
     return (
-      <Item floatingLabel style={styles.item}>
-        <Label style={styles.customLabel}>BET</Label>
-        <Input
+      <Item inlineLabel style={styles.item}>
+        <Label style={styles.customLabel}>BET:</Label>
+        <TextInput
           type="text"
           textAlign="center"
           style={styles.textInput}
+          placeholder={(this.props.odds) ? '' : '$15.00'}
+          placeholderTextColor="#ededed"
           value={(this.props.bet > 0) ? ('$' + this.props.bet) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
@@ -47,11 +52,13 @@ class Bet extends Component {
 class Win extends Component {
   render() {
     return (
-      <Item floatingLabel style={styles.item}>
-        <Label style={styles.customLabel}>WIN</Label>
-        <Input
+      <Item inlineLabel style={styles.item}>
+        <Label style={styles.customLabel}>WIN:</Label>
+        <TextInput
           textAlign="center"
           style={styles.textInput}
+          placeholder={(this.props.odds) ? '' : '$30.00'}
+          placeholderTextColor="#ededed"
           value={(isFinite(this.props.win) && (this.props.win > 0)) ? ('$' + this.props.win) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
@@ -64,11 +71,13 @@ class Win extends Component {
 class Payout extends Component {
   render() {
     return (
-      <Item floatingLabel style={styles.item}>
-        <Label style={styles.customLabel}>PAYOUT</Label>
-        <Input
+      <Item inlineLabel style={styles.item}>
+        <Label style={styles.customLabel}>PAYOUT:</Label>
+        <TextInput
           textAlign="center"
           style={styles.textInput}
+          placeholder={(this.props.odds) ? '' : '$45.00'}
+          placeholderTextColor="#ededed"
           value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? ('$' + this.props.payout) : ''}
           onChange={this.props.onChange}
           disabled={true}
@@ -159,7 +168,7 @@ export default class Calculator extends Component {
         <Win win={this.state.win} odds={this.state.odds} onChange={(event) => this.handleChange(event, 'win')}/>
       </View>
       <View style={styles.payoutInput}>
-        <Payout payout={this.state.payout}/>
+        <Payout payout={this.state.payout} odds={this.state.odds}/>
       </View>
       <TouchableOpacity onPress={() => this.clearState()} style={styles.reset}>
           <Text style={styles.resetText}>RESET</Text>
