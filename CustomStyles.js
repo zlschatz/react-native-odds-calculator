@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native';
 
-export default StyleSheet.create({
+export default StyleSheet.flatten({
   oddsInput: {
     flex: 1,
     backgroundColor: '#49654C',
