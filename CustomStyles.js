@@ -35,12 +35,16 @@ export default StyleSheet.flatten({
   },
   customLabel: {
     color: 'white',
-    textAlign: 'center',
-    fontWeight: '900'
+    textAlign: 'right',
+    fontWeight: '900',
+    fontSize: 25,
+    width: '50%'
   },
   textInput: {
     color: 'white',
     fontWeight: '900',
+    textAlign: 'left',
+    fontSize: 25,
   },
   item: {
     borderColor: 'transparent',
