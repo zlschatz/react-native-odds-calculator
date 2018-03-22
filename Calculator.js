@@ -3,10 +3,11 @@ import {
   AppRegistry,
   Platform,
   StyleSheet,
+  TextInput,
   TouchableOpacity,
   View
 } from 'react-native';
-import { Text, Item, Input, Label, Button } from 'native-base';
+import { Text, Item, Label, Button } from 'native-base';
 import styles from './CustomStyles.js';
 
 class Odds extends Component {
@@ -14,12 +15,12 @@ class Odds extends Component {
     return (
       <Item inlineLabel style={styles.item}>
         <Label style={styles.customLabel}>ODDS:</Label>
-        <Input
+        <TextInput
           type="text"
           textAlign="center"
           style={styles.textInput}
           placeholder="+200"
-          placeholderTextColor="white"
+          placeholderTextColor="#ededed"
           value={(this.props.odds) ? (this.props.odds) : ''}
           onChange={this.props.onChange}
         />
@@ -33,12 +34,12 @@ class Bet extends Component {
     return (
       <Item inlineLabel style={styles.item}>
         <Label style={styles.customLabel}>BET:</Label>
-        <Input
+        <TextInput
           type="text"
           textAlign="center"
           style={styles.textInput}
           placeholder={(this.props.odds) ? '' : '$15.00'}
-          placeholderTextColor="white"
+          placeholderTextColor="#ededed"
           value={(this.props.bet > 0) ? ('$' + this.props.bet) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
@@ -53,11 +54,11 @@ class Win extends Component {
     return (
       <Item inlineLabel style={styles.item}>
         <Label style={styles.customLabel}>WIN:</Label>
-        <Input
+        <TextInput
           textAlign="center"
           style={styles.textInput}
           placeholder={(this.props.odds) ? '' : '$30.00'}
-          placeholderTextColor="white"
+          placeholderTextColor="#ededed"
           value={(isFinite(this.props.win) && (this.props.win > 0)) ? ('$' + this.props.win) : ''}
           onChange={this.props.onChange}
           disabled={(this.props.odds) ? false : true}
@@ -72,11 +73,11 @@ class Payout extends Component {
     return (
       <Item inlineLabel style={styles.item}>
         <Label style={styles.customLabel}>PAYOUT:</Label>
-        <Input
+        <TextInput
           textAlign="center"
           style={styles.textInput}
           placeholder={(this.props.odds) ? '' : '$45.00'}
-          placeholderTextColor="white"
+          placeholderTextColor="#ededed"
           value={(isFinite(this.props.payout) && (this.props.payout > 0)) ? ('$' + this.props.payout) : ''}
           onChange={this.props.onChange}
           disabled={true}
