@@ -45,6 +45,7 @@ export default StyleSheet.flatten({
     fontWeight: '900',
     textAlign: 'left',
     fontSize: 25,
+    width: '50%'
   },
   item: {
     borderColor: 'transparent',
