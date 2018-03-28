@@ -16,7 +16,7 @@ export default class CustomHeader extends Component {
           <Left>
           </Left>
           <Body>
-            <Title>OBW</Title>
+            <Title>Odd.Bet.Win</Title>
           </Body>
           <Right>
           </Right>
